@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:pertemuan_2/pages/benefit/benefit_detail_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:pertemuan_2/pages/login/login_page.dart';
+import 'package:pertemuan_2/utils/db/secure_storage_manager.dart';
 
 class BenefitListPage extends StatefulWidget {
   static const route = '/list';
@@ -41,7 +43,19 @@ class _BenefitListPageState extends State<BenefitListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await SecureStorageManager().logout();
+              if (context.mounted) {
+                Navigator.pushReplacementNamed(context, LoginPage.route);
+              }
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
+      ),
       body: ListView.separated(
         itemCount: dataList.length,
         itemBuilder: (context, index) {

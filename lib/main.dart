@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pertemuan_2/pages/benefit/benefit_detail_page.dart';
 import 'package:pertemuan_2/pages/benefit/benefit_list_page.dart';
+import 'package:pertemuan_2/pages/login/login_page.dart';
+import 'package:pertemuan_2/pages/splash/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +25,8 @@ class MyApp extends StatelessWidget {
         switch (settings.name) {
           case BenefitListPage.route:
             return MaterialPageRoute(builder: (_) => const BenefitListPage());
+          case LoginPage.route:
+            return MaterialPageRoute(builder: (_) => const LoginPage());
           case BenefitDetailPage.route:
             return MaterialPageRoute(
               builder: (_) => BenefitDetailPage(
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
             );
         }
       },
-      home: const BenefitListPage(),
+      home: const SplashPage(),
     );
   }
 }
