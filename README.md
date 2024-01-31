@@ -1,16 +1,19 @@
-# pertemuan_2
+# Pelatihan
 
 A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## CMS
 
-A few resources to get you started if this is your first Flutter project:
+Link : https://dancare-staging.saharsa-tech.com/
+- username : admin
+- password : password
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tools
+### Postman
+- Digunakan untuk cek API
+- Download collection postman [disini](https://drive.google.com/file/d/1gJx0S04uQAB5vdWPbRFpGLTU3JoecBxo/view?usp=sharing) 
+
+Browse library/dependency bisa di : [pub.dev](https://pub.dev)
