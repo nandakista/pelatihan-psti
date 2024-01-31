@@ -1,8 +1,13 @@
 # Pelatihan
 
-A new Flutter project.
 
 ## Getting Started
+- Clone repository
+- Jangan lupa pub.get di pubspec.yaml atau ketik `flutter pub get` di terminal
+- Download postman
+- Download collection postman
+- Import collection di postman
+- Cek API
 
 ## CMS
 
