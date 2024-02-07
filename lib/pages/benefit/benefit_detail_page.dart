@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pertemuan_2/utility/api_constant.dart';
 
 class BenefitDetailPage extends StatefulWidget {
   static const route = '/detail';
@@ -25,8 +26,7 @@ class _BenefitDetailPageState extends State<BenefitDetailPage> {
 
   void getDataObject() async {
     // Url dari Postman
-    Uri uri = Uri.parse(
-        'https://dancare-staging.saharsa-tech.com/api/why-dancare/${widget.id}');
+    Uri uri = Uri.parse('${ApiConstant.baseUrl}/why-dancard/${widget.id}');
 
     /// Cara penggunaan package http
     var response = await http.get(uri);
