@@ -27,7 +27,7 @@ class _BenefitListPageState extends State<BenefitListPage> {
 
   void _getListData() async {
     try {
-      Uri uri = Uri.parse('${ApiConstant.baseUrl}/why-dancares');
+      Uri uri = Uri.parse('${ApiConstant.baseUrl}/why-dancare');
       var response = await http.get(uri);
       var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -59,7 +59,12 @@ class _BenefitListPageState extends State<BenefitListPage> {
       appBar: AppBar(
         title: const Text('List Data'),
       ),
-      body: _buildBody(),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          _getListData();
+        },
+        child: _buildBody(),
+      ),
     );
   }
 

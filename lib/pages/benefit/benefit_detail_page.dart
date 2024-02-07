@@ -26,7 +26,7 @@ class _BenefitDetailPageState extends State<BenefitDetailPage> {
 
   void getDataObject() async {
     // Url dari Postman
-    Uri uri = Uri.parse('${ApiConstant.baseUrl}/why-dancard/${widget.id}');
+    Uri uri = Uri.parse('${ApiConstant.baseUrl}/why-dancare/${widget.id}');
 
     /// Cara penggunaan package http
     var response = await http.get(uri);
@@ -46,34 +46,39 @@ class _BenefitDetailPageState extends State<BenefitDetailPage> {
       appBar: AppBar(
         title: Text('${dataItem['title']}'),
       ),
-      body: dataItem.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.network(
-                    '${dataItem['image']}',
-                    fit: BoxFit.cover,
-                    width: MediaQuery.sizeOf(context).width,
-                    height: 200,
-                  ),
-                  const SizedBox(height: 12),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(
-                      '${dataItem['content']}',
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontSize: 16,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          getDataObject();
+        },
+        child: dataItem.isEmpty
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      '${dataItem['image']}',
+                      fit: BoxFit.cover,
+                      width: MediaQuery.sizeOf(context).width,
+                      height: 200,
+                    ),
+                    const SizedBox(height: 12),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Text(
+                        '${dataItem['content']}',
+                        textAlign: TextAlign.left,
+                        style: const TextStyle(
+                          fontSize: 16,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+      ),
     );
   }
 }
