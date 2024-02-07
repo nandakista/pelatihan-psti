@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:pertemuan_2/pages/benefit/benefit_detail_page.dart';
 import 'package:pertemuan_2/pages/benefit/benefit_list_page.dart';
 import 'package:pertemuan_2/pages/login/login_page.dart';
+import 'package:pertemuan_2/pages/profile/profile_page.dart';
 import 'package:pertemuan_2/pages/splash/splash_page.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -23,6 +26,8 @@ class MyApp extends StatelessWidget {
       ),
       onGenerateRoute: (settings) {
         switch (settings.name) {
+          case ProfilePage.route :
+            return MaterialPageRoute(builder: (_) => const ProfilePage());
           case BenefitListPage.route:
             return MaterialPageRoute(builder: (_) => const BenefitListPage());
           case LoginPage.route:

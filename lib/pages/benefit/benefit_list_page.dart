@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:pertemuan_2/pages/benefit/benefit_detail_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:pertemuan_2/pages/login/login_page.dart';
+import 'package:pertemuan_2/pages/profile/profile_page.dart';
 import 'package:pertemuan_2/utils/db/secure_storage_manager.dart';
+import 'package:pertemuan_2/utils/db/storage_manager.dart';
 
 class BenefitListPage extends StatefulWidget {
   static const route = '/list';
@@ -46,8 +48,16 @@ class _BenefitListPageState extends State<BenefitListPage> {
       appBar: AppBar(
         actions: [
           IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, ProfilePage.route);
+            },
+            icon: Icon(Icons.person),
+          ),
+          IconButton(
             onPressed: () async {
               await SecureStorageManager().logout();
+              await StorageManager().clear();
+              await StorageManager().delete('user');
               if (context.mounted) {
                 Navigator.pushReplacementNamed(context, LoginPage.route);
               }
